@@ -1,0 +1,2053 @@
+npm run dev
+
+
+
+https://client.googiehost.com/clientarea.php?action=services
+
+
+
+
+https://chat.deepseek.com/a/chat/s/9e5eca0f-3609-4a45-8256-4a9956ec26b3
+
+
+
+تحويل الملفات المرفقة الي next js اكتب الملفات المرفقة بكامل مع css
+api ملف واحد
+css فس نفس الملف page.jsx
+عمل مثل الملف هذا page.jsx
+اكتب االاكواد المطلوبة بكامل دون النسيان
+app/meter-data-3/page.jsx
+app/api/meter-data-3/route.js
+بعربي
+const dbConfig = {
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "A1"
+};
+
+
+
+انشاءاعتراض المسارات شاشة الرئيسية بقائمة ازرار منسدلة و ازرار فرعية جنبية من اليمين و داخل  بقائمة ازرار بحث في داخلة قائمة البحث في بقائمة ازرار  
+ فتح الشاشات في نفس الشاشة الرئيسية روابط اظهار اسم الشاشة الحالية
+انشاء قائمة معلومات المستخدم  الصلاحية و الحالة و الفرع الحالي و تغيير الفروع و الوضع الليلي بشكل دائم و تخصيص الالوان بشكل دائم و تسجيل الخروج
+Next.js
+app/admin/page.jsx
+app/admin/ayout.jsx
+و رسم المسارات
+
+
+
+
+* {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        :root {
+          --primary: #2b6cb0;
+          --secondary: #2c5282;
+          --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+          --text-primary: #2b6cb0;
+          --text-secondary: #718096;
+          --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.05);
+          --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.1);
+          --transition: all 0.3s ease;
+          --danger: #e53e3e;
+          --danger-dark: #c53030;
+          --success: #38a169;
+          --success-dark: #2f855a;
+          --warning: #dd6b20;
+          --warning-dark: #c05621;
+        }
+
+        body {
+          direction: rtl;
+          font-family: 'Segoe UI', Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+        }
+
+        .container {
+          width: 95%;
+          margin: 30px auto;
+          padding: 25px;
+          border-radius: 15px;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+          background-color: ;
+        }
+
+        h2, h3 {
+          color: var(--primary);
+          text-align: center;
+          margin-bottom: 30px;
+          font-size: 2.2rem;
+          font-weight: 700;
+          position: relative;
+        }
+
+        h2::after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          right: 50%;
+          transform: translateX(50%);
+          width: 100px;
+          height: 4px;
+          background: var(--gradient);
+          border-radius: 2px;
+        }
+
+        h3 {
+          font-size: 1.8rem;
+          margin-bottom: 15px;
+        }
+
+        .form-row {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 20px;
+          margin-bottom: 30px;
+        }
+
+        .form-group {
+          position: relative;
+          transition: var(--transition);
+        }
+
+        .form-group:hover {
+          transform: translateY(-5px);
+        }
+
+        .input-group {
+          position: relative;
+          margin-bottom: 25px;
+        }
+
+        .input-group input,
+        .input-group select {
+          width: 100%;
+          padding: 12px 15px;
+          border: 2px solid #e2e8f0;
+          border-radius: 12px;
+          background: transparent;
+          font-size: 1rem;
+          color: var(--primary);
+          transition: var(--transition);
+          box-shadow: var(--shadow-sm);
+          appearance: none;
+          cursor: pointer;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+          border-color: var(--primary);
+          box-shadow: 0 0 10px rgba(43, 108, 176, 0.3);
+          outline: none;
+        }
+
+        .transparent-label {
+          position: absolute;
+          top: 50%;
+          right: 15px;
+          transform: translateY(-50%);
+          color: var(--primary);
+          font-size: 0.95rem;
+          pointer-events: none;
+          transition: var(--transition);
+          padding: 0 5px;
+          background: transparent;
+          opacity: 0.7;
+        }
+
+        .input-group input:not(:placeholder-shown) ~ .transparent-label,
+        .input-group select:not([value=""]) ~ .transparent-label,
+        .input-group input:focus ~ .transparent-label,
+        .input-group select:focus ~ .transparent-label {
+          top: -10px;
+          right: 10px;
+          font-size: 0.8rem;
+          color: var(--primary);
+          font-weight: 600;
+          opacity: 1;
+          background: ;
+        }
+
+           button {
+          padding: 12px 24px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-weight: 600;
+          font-size: 1rem;
+          color: #fff;
+          border: none;
+          transition: var(--transition);
+          box-shadow: var(--shadow-sm);
+        }
+
+        button:hover {
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-md);
+        }
+
+        button[type="submit"],
+        #applyFilterBtn {
+          background: var(--gradient);
+        }
+
+        button[type="submit"]:hover,
+        #applyFilterBtn:hover {
+          background: linear-gradient(135deg, var(--secondary), var(--primary));
+        }
+
+        #clearFilters,
+        #backBtn {
+          background: linear-gradient(135deg, #718096, #5a667a);
+        }
+
+        #clearFilters:hover,
+        #backBtn:hover {
+          background: linear-gradient(135deg, #5a667a, #718096);
+        }
+
+        table td button {
+          padding: 8px 16px;
+          background: linear-gradient(135deg, #e53e3e, #c53030);
+        }
+
+        table td button:hover {
+          background: linear-gradient(135deg, #c53030, #e53e3e);
+        }
+
+        #deleteSelectedBtn {
+          background: linear-gradient(135deg, #e53e3e, #c53030);
+        }
+
+        #deleteSelectedBtn:hover {
+          background: linear-gradient(135deg, #c53030, #e53e3e);
+        }
+
+        table {
+          width: 100%;
+          border-collapse: separate;
+          border-spacing: 0;
+          margin-top: 25px;
+          font-size: 0.95rem;
+          background: transparent;
+          border-radius: 10px;
+          overflow: hidden;
+          box-shadow: none;
+        }
+
+        table th,
+        table td {
+          padding: 14px;
+          text-align: center;
+          transition: background-color 0.3s ease;
+          color: var(--primary);
+        }
+
+        table th {
+          background: var(--gradient);
+          color: #fff;
+          font-weight: 600;
+          font-size: 1rem;
+          cursor: pointer;
+        }
+
+        table tr:nth-child(even) {
+          background: transparent;
+          box-shadow: inset 0 0 5px rgba(160, 174, 192, 0.2);
+        }
+
+        table tr:nth-child(odd) {
+          background: transparent;
+          box-shadow: inset 0 0 5px rgba(160, 174, 192, 0.1);
+        }
+
+        table tr:hover {
+          background: rgba(237, 242, 247, 0.3);
+        }
+
+        .branch-boxes-container {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 30px;
+          margin: 30px 0;
+          justify-content: center;
+          padding: 50px 0;
+        }
+
+        .branch-box {
+          flex: 1 1 200px;
+          background-color: #fff;
+          padding: 20px;
+          border: 1px solid #e2e8f0;
+          border-radius: 10px;
+          text-align: center;
+          cursor: pointer;
+          transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .branch-box:hover {
+          transform: scale(1.05);
+          background-color: hsl(210, 65.50%, 53.30%);
+        }
+
+        .branch-box h3 {
+          margin: 0 0 10px 0;
+          color: var(--primary);
+          font-size: 1.2rem;
+        }
+
+        .branch-box p {
+          margin: 5px 0;
+          color: #4a5568;
+          font-size: 1rem;
+        }
+
+        .branch-details-container {
+          display: none;
+          margin-top: 20px;
+          padding: 20px;
+          border: 2px solid var(--primary);
+          border-radius: 10px;
+          background-color: #fff;
+        }
+
+        .branch-details-container.show {
+          display: block;
+        }
+
+        .modal {
+          display: none;
+          position: fixed;
+          z-index: 999;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .modal.show {
+          display: block;
+        }
+
+        .modal-content {
+          background: #fff;
+          margin: 5% auto;
+          padding: 25px;
+          border: none;
+          width: 60%;
+          max-height: 80vh;
+          overflow-y: auto;
+          border-radius: 12px;
+          text-align: center;
+          box-shadow: 0 5px 20px rgba(237, 28, 28, 0.15);
+          position: relative;
+        }
+
+        .close {
+          color: #718096;
+          position: absolute;
+          top: 15px;
+          right: 20px;
+          font-size: 28px;
+          font-weight: bold;
+          cursor: pointer;
+          transition: color 0.3s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .close:hover,
+        .close:focus {
+          color: #2d3748;
+        }
+
+        .branch-selection-container {
+          margin: 20px 0;
+          padding: 15px;
+          border: 1px solidrgb(240, 15, 15);
+          border-radius: 8px;
+          background-color: ;
+        }
+
+        .branch-checkboxes {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 10px;
+          margin-top: 15px;
+        }
+
+        .branch-checkboxes label {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          cursor: pointer;
+          padding: 8px;
+          border-radius: 6px;
+          transition: background-color 0.2s;
+        }
+
+        .branch-checkboxes label:hover {
+          background-color:hsl(210, 65.50%, 53.30%);
+        }
+
+        .select-all-label {
+          font-weight: bold;
+          grid-column: 1 / -1;
+          padding: 10px;
+          background-color: ;
+          border-radius: 6px;
+        }
+
+        @media (max-width: 768px) {
+          .form-row {
+            grid-template-columns: 1fr;
+          }
+
+          table {
+            display: block;
+            overflow-x: auto;
+          }
+
+          .modal-content {
+            width: 90%;
+          }
+
+          .branch-checkboxes {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+          }
+        }
+ .pagination-controls {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 20px;
+          padding: 15px;
+          background: ;
+          border-radius: 10px;
+          box-shadow: var(--shadow-sm);
+        }
+
+        .records-per-page {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .records-per-page select {
+          padding: 8px 15px;
+          border-radius: 8px;
+          border: 2px solid #e2e8f0;
+          background: transparent;
+          color: var(--primary);
+          font-weight: 500;
+        }
+
+        .pagination-buttons {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+
+        .pagination-buttons button {
+          width: 40px;
+          height: 40px;
+          padding: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          background: var(--gradient);
+          color: white;
+          font-size: 1.2rem;
+        }
+
+        .pagination-buttons button.disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+
+        .pagination-buttons span {
+          font-weight: 600;
+          color: var(--primary);
+          margin: 0 15px;
+        }
+
+
+
+
+
+
+
+انشاءاعتراض المسارات شاشة الرئيسية بقائمة ازرار منسدلة و ازرار فرعية جنبية من اليمين و داخل  بقائمة ازرار بحث في داخلة قائمة البحث في بقائمة ازرار  
+ فتح الشاشات في نفس الشاشة الرئيسية روابط اظهار اسم الشاشة الحالية
+انشاء قائمة معلومات المستخدم  الصلاحية و الحالة و الفرع الحالي و تغيير الفروع و الوضع الليلي بشكل دائم و تخصيص الالوان بشكل دائم و تسجيل الخروج
+Next.js
+app/admin/page.jsx
+app/admin/ayout.jsx
+و رسم المسارات
+'use client';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import Head from 'next/head';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+  faUsers, faChartBar, faCogs, faBook, 
+  faExclamationTriangle, faClipboardCheck, faMoneyBillWave,
+  faUserCircle, faChevronDown, faUser, faShieldAlt,
+  faSitemap, faExchangeAlt, faMoon, faSun,
+  faSignOutAlt, faTimes, faChevronLeft, faCircle,
+  faBars, faBolt, faCodeBranch, faUserTag,
+  faCheckCircle, faTimesCircle, faPalette, faCheck,
+  faHome, faSearch
+} from '@fortawesome/free-solid-svg-icons';
+import { ToastContainer, toast } from 'react-toastify';
+import Swal from 'sweetalert2';
+import 'react-toastify/dist/ReactToastify.css';
+
+// تعيين أسماء الأدوار بالعربية
+const تعيين_الأدوار = {
+  'admin': 'المدير العام',
+  'system_admin': 'مدير النظام',
+  'account_manager': 'إدارة الحسابات',
+  'issue_manager': 'إدارة الإصدار',
+  'general_manager': 'متابعة المدير العام',
+  'revenue_review': 'مراجعة الإيرادات'
+};
+
+export default function لوحة_التحكم_الإدارية() {
+  const توجيه = useRouter();
+  const [مستخدم, حدد_المستخدم] = useState(null);
+  const [تحميل, حدد_التحميل] = useState(true);
+  const [القائمة_الجانبية_موسعة, حدد_القائمة_الجانبية_موسعة] = useState(false);
+  const [قائمة_المستخدم_المنسدلة_مفتوحة, حدد_قائمة_المستخدم_المنسدلة_مفتوحة] = useState(false);
+  const [الوضع_الداكن, حدد_الوضع_الداكن] = useState(false);
+  const [الفروع, حدد_الفروع] = useState([]);
+  const [الصفحة_الحالية, حدد_الصفحة_الحالية] = useState('');
+  const [القائمة_النشطة, حدد_القائمة_النشطة] = useState(null);
+  const [اسم_الشاشة, حدد_اسم_الشاشة] = useState('نظام إدارة الطاقة المتجددة');
+  const [تخصيص_الألوان_مفتوح, حدد_تخصيص_الألوان_مفتوح] = useState(false);
+  const [اللون_الأساسي, حدد_اللون_الأساسي] = useState('#4361ee');
+  const [اللون_الثانوي, حدد_اللون_الثانوي] = useState('#3f37c9');
+  const [بحث, حدد_البحث] = useState('');
+  const [نتائج_البحث, حدد_نتائج_البحث] = useState([]);
+  const [عرض_نتائج_البحث, حدد_عرض_نتائج_البحث] = useState(false);
+
+  // عناصر القائمة
+  const عناصر_القائمة = {
+    admin: [
+      { 
+        اسم: 'الرئيسية',
+        أيقونة: faHome,
+        رابط: '/admin',
+        اسم_الشاشة: 'الرئيسية',
+        عناصر_فرعية: []
+      },
+      { 
+        اسم: 'إدارة المستخدمين', 
+        أيقونة: faUsers, 
+        عناصر_فرعية: [
+          { اسم: 'إضافة مستخدم', رابط: '/users', اسم_الشاشة: 'إضافة مستخدم' },
+          { اسم: 'عرض المستخدمين', رابط: '/admin/users/list', اسم_الشاشة: 'عرض المستخدمين' }
+        ]
+      },
+      { 
+        اسم: 'التقارير', 
+        أيقونة: faChartBar, 
+        عناصر_فرعية: [
+          { اسم: 'تقرير يومي', رابط: '/admin/reports/daily', اسم_الشاشة: 'تقرير يومي' },
+          { اسم: 'تقرير شهري', رابط: '/admin/reports/monthly', اسم_الشاشة: 'تقرير شهري' }
+        ]
+      },
+      { 
+        اسم: 'الإعدادات', 
+        أيقونة: faCogs, 
+        عناصر_فرعية: [
+          { اسم: 'إعدادات النظام', رابط: '/admin/settings/system', اسم_الشاشة: 'إعدادات النظام' },
+          { اسم: 'إعدادات الحساب', رابط: '/admin/settings/account', اسم_الشاشة: 'إعدادات الحساب' }
+        ]
+      }
+    ]
+  };
+
+  // تحميل الألوان المحفوظة عند التحميل
+  useEffect(() => {
+    const تحميل_الألوان = () => {
+      const لون_أساسي_محفوظ = localStorage.getItem('primaryColor');
+      const لون_ثانوي_محفوظ = localStorage.getItem('secondaryColor');
+      if (لون_أساسي_محفوظ) حدد_اللون_الأساسي(لون_أساسي_محفوظ);
+      if (لون_ثانوي_محفوظ) حدد_اللون_الثانوي(لون_ثانوي_محفوظ);
+    };
+    تحميل_الألوان();
+  }, []);
+
+  // تطبيق الألوان على المتغيرات CSS
+  useEffect(() => {
+    document.documentElement.style.setProperty('--أساسي', اللون_الأساسي);
+    document.documentElement.style.setProperty('--ثانوي', اللون_الثانوي);
+  }, [اللون_الأساسي, اللون_الثانوي]);
+
+  // التحقق من المصادقة عند التحميل
+  useEffect(() => {
+    const تحقق_من_المصادقة = () => {
+      const مستخدم_مخزن = localStorage.getItem('user');
+      if (!مستخدم_مخزن) {
+        توجيه.push('/');
+        return;
+      }
+
+      const بيانات_المستخدم = JSON.parse(مستخدم_مخزن);
+      if (بيانات_المستخدم.role !== 'admin') {
+        توجيه.push('/');
+        return;
+      }
+
+      حدد_المستخدم(بيانات_المستخدم);
+      جلب_فروع_المستخدم(بيانات_المستخدم.username);
+      تحقق_من_حالة_المستخدم(بيانات_المستخدم.id);
+      حدد_التحميل(false);
+    };
+
+    تحقق_من_المصادقة();
+  }, []);
+
+  // البحث في القائمة
+  useEffect(() => {
+    if (بحث.trim() === '') {
+      حدد_نتائج_البحث([]);
+      حدد_عرض_نتائج_البحث(false);
+      return;
+    }
+
+    const نتائج = [];
+    const قائمة_الدور = عناصر_القائمة[مستخدم?.role] || [];
+    
+    for (const قائمة of قائمة_الدور) {
+      // البحث في العناصر الرئيسية
+      if (قائمة.اسم.toLowerCase().includes(بحث.toLowerCase())) {
+        نتائج.push({
+          نوع: 'رئيسي',
+          اسم: قائمة.اسم,
+          رابط: قائمة.رابط,
+          اسم_الشاشة: قائمة.اسم_الشاشة
+        });
+      }
+
+      // البحث في العناصر الفرعية
+      for (const عنصر_فرعي of قائمة.عناصر_فرعية) {
+        if (عنصر_فرعي.اسم.toLowerCase().includes(بحث.toLowerCase())) {
+          نتائج.push({
+            نوع: 'فرعي',
+            اسم: عنصر_فرعي.اسم,
+            رابط: عنصر_فرعي.رابط,
+            اسم_الشاشة: عنصر_فرعي.اسم_الشاشة,
+            القائمة_الأم: قائمة.اسم
+          });
+        }
+      }
+    }
+
+    حدد_نتائج_البحث(نتائج);
+    حدد_عرض_نتائج_البحث(نتائج.length > 0);
+  }, [بحث, مستخدم]);
+
+  // منع التنقل الخلفي الافتراضي
+  useEffect(() => {
+    const معالجة_زر_الرجوع = (حدث) => {
+      حدث.preventDefault();
+      window.history.forward();
+    };
+
+    window.history.pushState(null, null, window.location.pathname);
+    window.addEventListener('popstate', معالجة_زر_الرجوع);
+
+    return () => {
+      window.removeEventListener('popstate', معالجة_زر_الرجوع);
+    };
+  }, []);
+
+  // تفعيل/تعطيل الوضع الداكن
+  useEffect(() => {
+    if (الوضع_الداكن) {
+      document.body.classList.add('dark-mode');
+      localStorage.setItem('darkMode', 'true');
+    } else {
+      document.body.classList.remove('dark-mode');
+      localStorage.setItem('darkMode', 'false');
+    }
+  }, [الوضع_الداكن]);
+
+  // البحث عن رابط بناءً على اسم الشاشة
+  const ابحث_عن_رابط_حسب_اسم_الشاشة = (اسم_الشاشة_المطلوب) => {
+    const قائمة_الدور = عناصر_القائمة[مستخدم?.role] || [];
+    for (const قائمة of قائمة_الدور) {
+      if (قائمة.اسم_الشاشة === اسم_الشاشة_المطلوب) {
+        return قائمة.رابط;
+      }
+      for (const عنصر_فرعي of قائمة.عناصر_فرعية) {
+        if (عنصر_فرعي.اسم_الشاشة === اسم_الشاشة_المطلوب) {
+          return عنصر_فرعي.رابط;
+        }
+      }
+    }
+    return null;
+  };
+
+  // التعامل مع تغييرات URL
+  useEffect(() => {
+    if (!مستخدم) return;
+
+    const معالجة_تغيير_الحالة = () => {
+      const معلمات_URL = new URLSearchParams(window.location.search);
+      const شاشة = معلمات_URL.get('screen');
+      
+      if (شاشة) {
+        const رابط = ابحث_عن_رابط_حسب_اسم_الشاشة(شاشة);
+        if (رابط && رابط !== '/admin') {
+          حدد_الصفحة_الحالية(رابط);
+          حدد_اسم_الشاشة(شاشة);
+        } else {
+          حدد_الصفحة_الحالية('');
+          حدد_اسم_الشاشة('نظام إدارة الطاقة المتجددة');
+        }
+      } else {
+        حدد_الصفحة_الحالية('');
+        حدد_اسم_الشاشة('نظام إدارة الطاقة المتجددة');
+      }
+    };
+
+    معالجة_تغيير_الحالة();
+    window.addEventListener('popstate', معالجة_تغيير_الحالة);
+
+    return () => {
+      window.removeEventListener('popstate', معالجة_تغيير_الحالة);
+    };
+  }, [مستخدم]);
+
+  // جلب فروع المستخدم
+  const جلب_فروع_المستخدم = async (اسم_المستخدم) => {
+    try {
+      const استجابة = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'getBranches', username: اسم_المستخدم })
+      });
+      const بيانات = await استجابة.json();
+      حدد_الفروع(بيانات);
+    } catch (خطأ) {
+      console.error('فشل في جلب الفروع:', خطأ);
+      toast.error('فشل في جلب بيانات الفروع');
+    }
+  };
+
+  // التحقق من حالة المستخدم
+  const تحقق_من_حالة_المستخدم = async (معرف_المستخدم) => {
+    try {
+      const استجابة = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'getUserStatus', userId: معرف_المستخدم })
+      });
+      const بيانات = await استجابة.json();
+      
+      if (!بيانات.success || بيانات.isActive === 0) {
+        معالجة_تسجيل_الخروج();
+      }
+    } catch (خطأ) {
+      console.error('فشل في التحقق من حالة المستخدم:', خطأ);
+      toast.error('فشل في التحقق من حالة المستخدم');
+    }
+  };
+
+  // تغيير الفرع
+  const معالجة_تغيير_الفرع = async (فرع) => {
+    try {
+      const نتيجة = await Swal.fire({
+        title: 'تغيير الفرع',
+        text: `هل أنت متأكد من تغيير الفرع إلى ${فرع}؟`,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'نعم، تغيير',
+        cancelButtonText: 'إلغاء',
+        reverseButtons: true
+      });
+
+      if (نتيجة.isConfirmed) {
+        const استجابة = await fetch('/api/auth', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            action: 'changeBranch',
+            username: مستخدم.username,
+            branch: فرع
+          })
+        });
+        const بيانات = await استجابة.json();
+        
+        if (بيانات.success) {
+          localStorage.setItem('user', JSON.stringify(بيانات.user));
+          حدد_المستخدم(بيانات.user);
+          حدد_قائمة_المستخدم_المنسدلة_مفتوحة(false);
+          toast.success(`تم تغيير الفرع إلى ${فرع} بنجاح`);
+        } else {
+          toast.error(بيانات.message || 'فشل في تغيير الفرع');
+        }
+      }
+    } catch (خطأ) {
+      console.error('فشل في تغيير الفرع:', خطأ);
+      toast.error('حدث خطأ أثناء تغيير الفرع');
+    }
+  };
+
+  // تبديل حالة القائمة الجانبية
+  const تبديل_القائمة_الجانبية = () => {
+    حدد_القائمة_الجانبية_موسعة(!القائمة_الجانبية_موسعة);
+  };
+
+  // تبديل القائمة الفرعية
+  const تبديل_القائمة_الفرعية = (مؤشر) => {
+    حدد_القائمة_النشطة(القائمة_النشطة === مؤشر ? null : مؤشر);
+  };
+
+  // تسجيل الخروج
+  const معالجة_تسجيل_الخروج = () => {
+    Swal.fire({
+      title: 'تسجيل الخروج',
+      text: 'هل أنت متأكد من تسجيل الخروج؟',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'نعم، تسجيل خروج',
+      cancelButtonText: 'إلغاء',
+      reverseButtons: true
+    }).then((نتيجة) => {
+      if (نتيجة.isConfirmed) {
+        localStorage.removeItem('user');
+        toast.success('تم تسجيل الخروج بنجاح');
+        توجيه.push('/');
+      }
+    });
+  };
+
+  // تبديل الوضع الداكن
+  const تبديل_الوضع_الداكن = () => {
+    حدد_الوضع_الداكن(!الوضع_الداكن);
+    toast.info(`تم تفعيل الوضع ${!الوضع_الداكن ? 'الليلي' : 'النهاري'}`);
+  };
+
+  // تطبيق الألوان المخصصة
+  const تطبيق_الألون = () => {
+    localStorage.setItem('primaryColor', اللون_الأساسي);
+    localStorage.setItem('secondaryColor', اللون_الثانوي);
+    toast.success('تم تطبيق الألوان بنجاح');
+    حدد_تخصيص_الألوان_مفتوح(false);
+  };
+
+  // إعادة تعيين الألوان الافتراضية
+  const إعادة_تعيين_الألون = () => {
+    حدد_اللون_الأساسي('#4361ee');
+    حدد_اللون_الثانوي('#3f37c9');
+    localStorage.removeItem('primaryColor');
+    localStorage.removeItem('secondaryColor');
+    toast.success('تم إعادة تعيين الألوان إلى الافتراضي');
+  };
+
+  // معالجة النقر على القائمة
+  const معالجة_نقر_القائمة = (رابط, اسم_الشاشة_جديد) => {
+    if (رابط === '/admin') {
+      // الصفحة الرئيسية: عرض المحتوى الترحيبي
+      حدد_الصفحة_الحالية('');
+      حدد_اسم_الشاشة('نظام إدارة الطاقة المتجددة');
+      window.history.pushState({ path: '/admin' }, '', '/admin');
+    } else {
+      // صفحات أخرى: تحديث الـ iframe
+      حدد_الصفحة_الحالية(رابط);
+      حدد_اسم_الشاشة(اسم_الشاشة_جديد);
+      const رابط_جديد = `/admin/?screen=${encodeURIComponent(اسم_الشاشة_جديد)}`;
+      window.history.pushState({ path: رابط_جديد }, '', رابط_جديد);
+    }
+    // إغلاق نتائج البحث بعد الاختيار
+    حدد_عرض_نتائج_البحث(false);
+    حدد_البحث('');
+  };
+
+  // عرض شاشة التحميل إذا لم يتم التحقق من المستخدم
+  if (تحميل || !مستخدم) {
+    return (
+      <div className="شاشة_التحميل">
+        <div className="محمل">
+          <div className="دائرة_المحمل"></div>
+          <div className="دائرة_المحمل"></div>
+          <div className="دائرة_المحمل"></div>
+        </div>
+      </div>
+    );
+  }
+
+  const قائمة_دور_المستخدم = عناصر_القائمة[مستخدم.role] || [];
+
+  return (
+    <>
+      <Head>
+        <title>نظام إدارة الطاقة المتجددة - {اسم_الشاشة}</title>
+      </Head>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={true}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme={الوضع_الداكن ? "dark" : "light"}
+      />
+
+      <header>
+        <div className="عنوان_الرأس">
+          <FontAwesomeIcon icon={faBolt} />
+          نظام إدارة الطاقة المتجددة - {اسم_الشاشة}
+        </div>
+        
+        <div className="حاوية_البحث">
+          <div className="مجموعة_البحث">
+            <input
+              type="text"
+              placeholder="ابحث في القائمة..."
+              value={بحث}
+              onChange={(e) => حدد_البحث(e.target.value)}
+              onFocus={() => حدد_عرض_نتائج_البحث(نتائج_البحث.length > 0)}
+            />
+            <FontAwesomeIcon icon={faSearch} className="أيقونة_البحث" />
+          </div>
+          
+          {عرض_نتائج_البحث && (
+            <div className="نتائج_البحث">
+              {نتائج_البحث.map((نتيجة, مؤشر) => (
+                <div
+                  key={مؤشر}
+                  className="عنصر_نتيجة_بحث"
+                  onClick={() => معالجة_نقر_القائمة(نتيجة.رابط, نتيجة.اسم_الشاشة)}
+                >
+                  <div className="معلومات_النتيجة">
+                    <span className="اسم_النتيجة">{نتيجة.اسم}</span>
+                    {نتيجة.نوع === 'فرعي' && (
+                      <span className="قائمة_النتيجة_الأم">في {نتيجة.القائمة_الأم}</span>
+                    )}
+                  </div>
+                  <FontAwesomeIcon icon={faChevronLeft} />
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+        
+        <div className="معلومات_المستخدم_المنسدلة">
+          <button 
+            className="زر_القائمة_المنسدلة" 
+            onClick={() => حدد_قائمة_المستخدم_المنسدلة_مفتوحة(!قائمة_المستخدم_المنسدلة_مفتوحة)}
+          >
+            <FontAwesomeIcon icon={faUserCircle} />
+            {مستخدم.username}
+            <FontAwesomeIcon 
+              icon={faChevronDown} 
+              className={`أيقونة_السهم ${قائمة_المستخدم_المنسدلة_مفتوحة ? 'نشط' : ''}`} 
+            />
+          </button>
+          <div className={`محتوى_القائمة_المنسدلة ${قائمة_المستخدم_المنسدلة_مفتوحة ? 'عرض' : ''}`}>
+            <div className="قسم_معلومات_المستخدم">
+              <div className="عنصر_معلومات">
+                <FontAwesomeIcon icon={faUser} />
+                <span>اسم المستخدم: {مستخدم.username}</span>
+              </div>
+              <div className="عنصر_معلومات">
+                <FontAwesomeIcon icon={faUserTag} />
+                <span>الصلاحية: {تعيين_الأدوار[مستخدم.role] || مستخدم.role}</span>
+              </div>
+              <div className="عنصر_معلومات">
+                <FontAwesomeIcon icon={مستخدم.isActive ? faCheckCircle : faTimesCircle} />
+                <span>الحالة: {مستخدم.isActive ? 'مفعل' : 'غير مفعل'}</span>
+              </div>
+              <div className="عنصر_معلومات">
+                <FontAwesomeIcon icon={faSitemap} />
+                <span>الفرع الحالي: {مستخدم.branch}</span>
+              </div>
+            </div>
+            
+            <div className="فاصل_القائمة_المنسدلة"></div>
+            
+            <div className="قسم_الفروع">
+              <div className="عنوان_القسم">
+                <FontAwesomeIcon icon={faExchangeAlt} />
+                <span>تغيير الفرع:</span>
+              </div>
+              <div className="قائمة_الفروع">
+                {الفروع.map((فرع) => (
+                  <div 
+                    key={فرع} 
+                    className={`خيار_الفرع ${مستخدم.branch === فرع ? 'نشط' : ''}`}
+                    onClick={() => معالجة_تغيير_الفرع(فرع)}
+                  >
+                    <FontAwesomeIcon icon={faCodeBranch} />
+                    <span>{فرع}</span>
+                    {مستخدم.branch === فرع && <div className="مؤشر_النشاط"></div>}
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            <div className="فاصل_القائمة_المنسدلة"></div>
+            
+            <div className="قسم_الإعدادات">
+              <div 
+                className="عنصر_الإعدادات تبديل_الوضع_الداكن"
+                onClick={تبديل_الوضع_الداكن}
+              >
+                <FontAwesomeIcon icon={الوضع_الداكن ? faSun : faMoon} />
+                <span>الوضع الليلي: {الوضع_الداكن ? 'مفعل' : 'غير مفعل'}</span>
+                <div className={`مفتاح_التبديل ${الوضع_الداكن ? 'نشط' : ''}`}>
+                  <div className="مقبض_التبديل"></div>
+                </div>
+              </div>
+              
+              <div 
+                className="عنصر_الإعدادات"
+                onClick={() => حدد_تخصيص_الألوان_مفتوح(!تخصيص_الألوان_مفتوح)}
+              >
+                <FontAwesomeIcon icon={faPalette} />
+                <span>تخصيص الألوان</span>
+              </div>
+              
+              {تخصيص_الألوان_مفتوح && (
+                <div className="تخصيص_الألوان_القائمة">
+                  <div className="محدد_اللون">
+                    <label>اللون الأساسي:</label>
+                    <input 
+                      type="color" 
+                      value={اللون_الأساسي}
+                      onChange={(e) => حدد_اللون_الأساسي(e.target.value)}
+                    />
+                  </div>
+                  <div className="محدد_اللون">
+                    <label>اللون الثانوي:</label>
+                    <input 
+                      type="color" 
+                      value={اللون_الثانوي}
+                      onChange={(e) => حدد_اللون_الثانوي(e.target.value)}
+                    />
+                  </div>
+                  <div className="أزرار_تخصيص_الألوان">
+                    <button 
+                      className="زر_تطبيق_الألوان"
+                      onClick={تطبيق_الألون}
+                    >
+                      <FontAwesomeIcon icon={faCheck} />
+                      تطبيق
+                    </button>
+                    <button 
+                      className="زر_إعادة_تعيين_الألوان"
+                      onClick={إعادة_تعيين_الألون}
+                    >
+                      إعادة تعيين
+                    </button>
+                  </div>
+                </div>
+              )}
+              
+              <div 
+                className="عنصر_الإعدادات زر_تسجيل_الخروج"
+                onClick={معالجة_تسجيل_الخروج}
+              >
+                <FontAwesomeIcon icon={faSignOutAlt} />
+                <span>تسجيل الخروج</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div className={`القائمة_الجانبية ${القائمة_الجانبية_موسعة ? 'موسعة' : ''}`}>
+        <button className="زر_إغلاق_القائمة_الجانبية" onClick={تبديل_القائمة_الجانبية}>
+          <FontAwesomeIcon icon={faTimes} />
+        </button>
+        {قائمة_دور_المستخدم.map((عنصر, مؤشر) => (
+          <div key={مؤشر}>
+            <a
+              className={`عنصر_القائمة_الجانبية ${القائمة_النشطة === مؤشر ? 'نشط' : ''}`}
+              onClick={() => {
+                if (عنصر.رابط) {
+                  معالجة_نقر_القائمة(عنصر.رابط, عنصر.اسم_الشاشة);
+                } else {
+                  تبديل_القائمة_الفرعية(مؤشر);
+                }
+              }}
+            >
+              <FontAwesomeIcon icon={عنصر.أيقونة} />
+              <span>{عنصر.اسم}</span>
+              {عنصر.عناصر_فرعية && (
+                <FontAwesomeIcon 
+                  icon={faChevronLeft} 
+                  className={`سهم_فرعي ${القائمة_النشطة === مؤشر ? 'نشط' : ''}`} 
+                />
+              )}
+            </a>
+            {عنصر.عناصر_فرعية && القائمة_النشطة === مؤشر && (
+              <div className="قائمة_فرعية">
+                {عنصر.عناصر_فرعية.map((عنصر_فرعي, مؤشر_فرعي) => (
+                  <a
+                    key={مؤشر_فرعي}
+                    className="عنصر_القائمة_الجانبية"
+                    onClick={() => معالجة_نقر_القائمة(عنصر_فرعي.رابط, عنصر_فرعي.اسم_الشاشة)}
+                  >
+                    <FontAwesomeIcon icon={faCircle} />
+                    <span>{عنصر_فرعي.اسم}</span>
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <button className="زر_تبديل_القائمة_الجانبية" onClick={تبديل_القائمة_الجانبية}>
+        <FontAwesomeIcon icon={faBars} />
+      </button>
+
+      {الصفحة_الحالية ? (
+        <iframe
+          key={الصفحة_الحالية} // إضافة key لإجبار إعادة تحميل الـ iframe عند تغيير الرابط
+          className="حاوية_الإطار"
+          src={الصفحة_الحالية}
+          title="المحتوى الرئيسي"
+        ></iframe>
+      ) : (
+        <div className="المحتوى_الرئيسي">
+          <h1 className="توهج">مرحباً بك، {مستخدم.username}!</h1>
+          <p>اختر صفحة من القائمة الجانبية للبدء</p>
+        </div>
+      )}
+
+      <footer className="تذييل">
+        جميع الحقوق محفوظة © <strong>HASSAN</strong> 2025
+      </footer>
+
+      <style jsx global>{`
+  :root {
+    /* الألوان الأساسية */
+    --أساسي: #4361ee;
+    --ثانوي: #3f37c9;
+    --داكن: #1a1a2e;
+    --فاتح: #f8f9fa;
+    --مميز: #4cc9f0;
+    --نجاح: #4caf50;
+    --تحذير: #ff9800;
+    --خطر: #f44336;
+    --نص-أساسي: #212529;
+    --نص-ثانوي: #6c757d;
+    
+    /* الظلال والتأثيرات */
+    --انتقال: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    --ظل-صغير: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    --ظل-متوسط: 0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.08);
+    --ظل-كبير: 0 10px 20px rgba(0,0,0,0.1), 0 6px 6px rgba(0,0,0,0.1);
+    --ظل-عريض: 0 15px 25px rgba(0,0,0,0.15), 0 5px 10px rgba(0,0,0,0.05);
+    --تدرج: linear-gradient(135deg, var(--أساسي), var(--ثانوي));
+    
+    /* الأبعاد */
+    --عرض-القائمة-الجانبية: 80px;
+    --عرض-القائمة-الجانبية-الموسعة: 300px;
+    --border-radius: 12px;
+  }
+
+  /* إعادة ضبط عام */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--فاتح);
+    color: var(--نص-أساسي);
+    transition: var(--انتقال);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  body.dark-mode {
+    background-color: var(--داكن);
+    color: var(--فاتح);
+    --نص-أساسي: #f8f9fa;
+    --نص-ثانوي: #adb5bd;
+  }
+
+  /* شاشة التحميل */
+  .شاشة_التحميل {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--تدرج);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+  }
+
+  .محمل {
+    position: relative;
+    width: 120px;
+    height: 120px;
+  }
+
+  .دائرة_المحمل {
+    position: absolute;
+    border-radius: 50%;
+    border: 8px solid transparent;
+    animation: دوران 1.5s linear infinite;
+  }
+
+  .دائرة_المحمل:nth-child(1) {
+    width: 100%;
+    height: 100%;
+    border-top-color: var(--مميز);
+    border-bottom-color: var(--مميز);
+  }
+
+  .دائرة_المحمل:nth-child(2) {
+    top: 20%;
+    left: 20%;
+    width: 60%;
+    height: 60%;
+    border-left-color: rgba(255, 255, 255, 0.8);
+    border-right-color: rgba(255, 255, 255, 0.8);
+    animation-direction: reverse;
+  }
+
+  .دائرة_المحمل:nth-child(3) {
+    top: 35%;
+    left: 35%;
+    width: 30%;
+    height: 30%;
+    border-top-color: var(--أساسي);
+    border-bottom-color: var(--أساسي);
+    animation-duration: 2s;
+  }
+
+  @keyframes دوران {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* الرأس */
+  header {
+    background: var(--تدرج);
+    color: var(--فاتح);
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    box-shadow: var(--ظل-عريض);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1001;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--انتقال);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .عنوان_الرأس {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-grow: 1;
+    justify-content: center;
+  }
+
+  .عنوان_الرأس svg {
+    color: var(--مميز);
+    font-size: 1.8rem;
+    animation: نبض 2s infinite;
+  }
+
+  @keyframes نبض {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+
+  /* شريط البحث */
+  .حاوية_البحث {
+    position: relative;
+    flex-grow: 1;
+    max-width: 500px;
+    margin: 0 1.5rem;
+  }
+
+  .مجموعة_البحث {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .مجموعة_البحث input {
+    width: 100%;
+    padding: 0.75rem 1.5rem 0.75rem 3rem;
+    border: none;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--فاتح);
+    font-size: 1rem;
+    transition: var(--انتقال);
+    backdrop-filter: blur(5px);
+  }
+
+  body.dark-mode .مجموعة_البحث input {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .مجموعة_البحث input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .مجموعة_البحث input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 0 2px var(--مميز);
+  }
+
+  .أيقونة_البحث {
+    position: absolute;
+    left: 1rem;
+    color: var(--فاتح);
+    opacity: 0.8;
+  }
+
+  /* نتائج البحث */
+  .نتائج_البحث {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--فاتح);
+    border-radius: var(--border-radius);
+    box-shadow: var(--ظل-عريض);
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1002;
+    margin-top: 0.5rem;
+    animation: انزلاق_لأسفل 0.3s ease-out;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  body.dark-mode .نتائج_البحث {
+    background: rgba(26, 26, 46, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .عنصر_نتيجة_بحث {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: var(--انتقال);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  body.dark-mode .عنصر_نتيجة_بحث {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .عنصر_نتيجة_بحث:hover {
+    background: rgba(67, 97, 238, 0.1);
+  }
+
+  body.dark-mode .عنصر_نتيجة_بحث:hover {
+    background: rgba(67, 97, 238, 0.2);
+  }
+
+  .معلومات_النتيجة {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .اسم_النتيجة {
+    font-weight: 600;
+    color: var(--نص-أساسي);
+  }
+
+  body.dark-mode .اسم_النتيجة {
+    color: var(--فاتح);
+  }
+
+  .قائمة_النتيجة_الأم {
+    font-size: 0.8rem;
+    color: var(--نص-ثانوي);
+    margin-top: 0.25rem;
+  }
+
+  body.dark-mode .قائمة_النتيجة_الأم {
+    color: var(--فاتح);
+    opacity: 0.7;
+  }
+
+  .عنصر_نتيجة_بحث svg {
+    color: var(--نص-ثانوي);
+    font-size: 0.8rem;
+  }
+
+  body.dark-mode .عنصر_نتيجة_بحث svg {
+    color: var(--فاتح);
+    opacity: 0.7;
+  }
+
+.معلومات_المستخدم_المنسدلة {
+          position: relative;
+          z-index: 1002;
+        }
+
+        .معلومات_المستخدم_المنسدلة .زر_القائمة_المنسدلة {
+          background: var(--تدرج);
+          color: var(--فاتح);
+          padding: 0.75rem 1.5rem;
+          border: none;
+          border-radius: 50px;
+          cursor: pointer;
+          font-size: 1rem;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          box-shadow: var(--ظل_متوسط);
+          transition: var(--انتقال);
+        }
+
+        .معلومات_المستخدم_المنسدلة .زر_القائمة_المنسدلة:hover {
+          transform: translateY(-2px);
+          box-shadow: var(--ظل_كبير);
+        }
+
+        .معلومات_المستخدم_المنسدلة .محتوى_القائمة_المنسدلة {
+          display: none;
+          position: absolute;
+          top: 100%;
+          right: 85%;
+          transform: translateX(85%);
+          background: rgba(30, 30, 46, 0.95);
+          backdrop-filter: blur(10px);
+          min-width: 320px;
+          max-height: 80vh;
+          overflow-y: auto;
+          border-radius: 12px;
+          box-shadow: var(--ظل_عريض);
+          z-index: 1;
+          animation: تلاشي_للداخل 0.3s ease-out;
+          width: max-content;
+          max-width: calc(100vw - 2rem);
+        }
+
+        body.dark-mode .معلومات_المستخدم_المنسدلة .محتوى_القائمة_المنسدلة {
+          background: rgba(30, 30, 46, 0.95);
+        }
+
+        .معلومات_المستخدم_المنسدلة .محتوى_القائمة_المنسدلة.عرض {
+          display: block;
+        }
+
+        .قسم_معلومات_المستخدم, 
+        .قسم_الفروع, 
+        .قسم_الإعدادات {
+          padding: 1rem;
+        }
+
+        .عنصر_معلومات {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 0.5rem 0;
+          color: var(--نص_أساسي);
+        }
+
+        body.dark-mode .عنصر_معلومات {
+          color: var(--فاتح);
+        }
+
+        .عنصر_معلومات svg {
+          color: var(--أساسي);
+          width: 20px;
+          text-align: center;
+        }
+
+        .عنصر_معلومات .fa-check-circle {
+          color: var(--نجاح);
+        }
+
+        .عنصر_معلومات .fa-times-circle {
+          color: var(--خطر);
+        }
+
+        .فاصل_القائمة_المنسدلة {
+          height: 1px;
+          background: rgba(0, 0, 0, 0.1);
+          margin: 0.5rem 0;
+        }
+
+        body.dark-mode .فاصل_القائمة_المنسدلة {
+          background: rgba(255, 255, 255, 0.1);
+        }
+
+        .عنوان_القسم {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          margin-bottom: 1rem;
+          font-weight: 600;
+          color: var(--نص_أساسي);
+        }
+
+        body.dark-mode .عنوان_القسم {
+          color: var(--فاتح);
+        }
+
+        .عنوان_القسم svg {
+          color: var(--أساسي);
+        }
+
+        .قائمة_الفروع {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          max-height: 200px;
+          overflow-y: auto;
+          padding-right: 5px;
+        }
+
+        .قائمة_الفروع::-webkit-scrollbar {
+          width: 6px;
+        }
+
+        .قائمة_الفروع::-webkit-scrollbar-track {
+          background: rgba(0, 0, 0, 0.05);
+        }
+
+        .قائمة_الفروع::-webkit-scrollbar-thumb {
+          background: var(--أساسي);
+          border-radius: 3px;
+        }
+
+        .خيار_الفرع {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 0.75rem;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: var(--انتقال);
+          position: relative;
+          background: rgba(0, 0, 0, 0.05);
+        }
+
+        body.dark-mode .خيار_الفرع {
+          background: rgba(255, 255, 255, 0.05);
+        }
+
+        .خيار_الفرع:hover {
+          background: rgba(67, 97, 238, 0.1);
+          transform: translateX(5px);
+        }
+
+        body.dark-mode .خيار_الفرع:hover {
+          background: rgba(67, 97, 238, 0.2);
+        }
+
+        .خيار_الفرع.نشط {
+          background: rgba(67, 97, 238, 0.2);
+          font-weight: 600;
+        }
+
+        .خيار_الفرع svg {
+          color: var(--أساسي);
+        }
+
+
+  .مؤشر_النشاط {
+    position: absolute;
+    left: 10px;
+    width: 6px;
+    height: 6px;
+    background: var(--أساسي);
+    border-radius: 50%;
+  }
+
+  /* إعدادات القائمة المنسدلة */
+  .قسم_الإعدادات {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .عنصر_الإعدادات {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--انتقال);
+  }
+
+  .عنصر_الإعدادات:hover {
+    background: rgba(67, 97, 238, 0.1);
+  }
+
+  body.dark-mode .عنصر_الإعدادات:hover {
+    background: rgba(67, 97, 238, 0.2);
+  }
+
+  .عنصر_الإعدادات svg {
+    color: var(--أساسي);
+    width: 20px;
+    text-align: center;
+  }
+
+  .تبديل_الوضع_الداكن {
+    position: relative;
+    padding-right: 60px;
+  }
+
+  .مفتاح_التبديل {
+    position: absolute;
+    right: 1.5rem;
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 20px;
+    transition: var(--انتقال);
+  }
+
+  .مفتاح_التبديل.نشط {
+    background-color: var(--أساسي);
+  }
+
+  .مقبض_التبديل {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border-radius: 50%;
+    transition: var(--انتقال);
+  }
+
+  .مفتاح_التبديل.نشط .مقبض_التبديل {
+    transform: translateX(20px);
+  }
+
+  .زر_تسجيل_الخروج {
+    color: var(--خطر);
+  }
+
+  .زر_تسجيل_الخروج:hover {
+    background: rgba(244, 67, 54, 0.1) !important;
+  }
+
+  /* تخصيص الألوان */
+  .تخصيص_الألوان_القائمة {
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    margin: 0.5rem 0;
+  }
+
+  body.dark-mode .تخصيص_الألوان_القائمة {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .محدد_اللون {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+
+  .محدد_اللون label {
+    font-size: 0.9rem;
+    color: var(--نص-أساسي);
+  }
+
+  body.dark-mode .محدد_اللون label {
+    color: var(--فاتح);
+  }
+
+  .محدد_اللون input[type="color"] {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--أساسي);
+    border-radius: 8px;
+    cursor: pointer;
+    background: transparent;
+  }
+
+  .أزرار_تخصيص_الألوان {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .زر_تطبيق_الألوان, .زر_إعادة_تعيين_الألوان {
+    flex: 1;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--انتقال);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .زر_تطبيق_الألوان {
+    background: var(--أساسي);
+    color: white;
+  }
+
+  .زر_تطبيق_الألوان:hover {
+    background: var(--ثانوي);
+    transform: translateY(-2px);
+  }
+
+  .زر_إعادة_تعيين_الألوان {
+    background: rgba(0, 0, 0, 0.1);
+    color: var(--نص-أساسي);
+  }
+
+  body.dark-mode .زر_إعادة_تعيين_الألوان {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--فاتح);
+  }
+
+  .زر_إعادة_تعيين_الألوان:hover {
+    background: rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+  }
+
+  body.dark-mode .زر_إعادة_تعيين_الألوان:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* القائمة الجانبية */
+  .القائمة_الجانبية {
+    height: 100vh;
+    width: var(--عرض-القائمة-الجانبية);
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    background: var(--تدرج);
+    transition: width 0.3s ease;
+    box-shadow: var(--ظل-عريض);
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 80px;
+    min-height: 100vh;
+    backdrop-filter: blur(10px);
+  }
+
+  .القائمة_الجانبية::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .القائمة_الجانبية::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+  }
+
+  .القائمة_الجانبية::-webkit-scrollbar-thumb {
+    background: var(--مميز);
+    border-radius: 3px;
+  }
+
+  .القائمة_الجانبية::-webkit-scrollbar-thumb:hover {
+    background: var(--أساسي);
+  }
+
+  .القائمة_الجانبية.موسعة {
+    width: var(--عرض-القائمة-الجانبية-الموسعة);
+  }
+
+  .زر_إغلاق_القائمة_الجانبية {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: var(--فاتح);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--انتقال);
+    z-index: 1001;
+  }
+
+  .القائمة_الجانبية.موسعة .زر_إغلاق_القائمة_الجانبية {
+    display: block;
+  }
+
+  .زر_إغلاق_القائمة_الجانبية:hover {
+    transform: scale(1.1);
+  }
+
+  .عنصر_القائمة_الجانبية {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    text-decoration: none;
+    font-size: 1rem;
+    color: var(--فاتح);
+    transition: var(--انتقال);
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .عنصر_القائمة_الجانبية:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  .عنصر_القائمة_الجانبية svg {
+    font-size: 1.25rem;
+    min-width: 30px;
+    transition: var(--انتقال);
+  }
+
+  .عنصر_القائمة_الجانبية span {
+    margin-right: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease 0.2s;
+    font-weight: 500;
+  }
+
+  .القائمة_الجانبية.موسعة .عنصر_القائمة_الجانبية span {
+    opacity: 1;
+  }
+
+  .عنصر_القائمة_الجانبية::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 0;
+    background-color: var(--مميز);
+    border-radius: 2px 0 0 2px;
+    transition: height 0.3s ease;
+  }
+
+  .عنصر_القائمة_الجانبية:hover::after {
+    height: 60%;
+  }
+
+  .عنصر_القائمة_الجانبية.نشط {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .عنصر_القائمة_الجانبية.نشط::after {
+    height: 60%;
+  }
+
+  /* القوائم الفرعية */
+  .قائمة_فرعية {
+    display: block;
+    background: rgba(0, 0, 0, 0.1);
+    animation: انزلاق_لأسفل 0.4s ease-out;
+  }
+
+  .قائمة_فرعية .عنصر_القائمة_الجانبية {
+    padding: 0.75rem 1.5rem 0.75rem 3rem;
+    font-size: 0.9rem;
+  }
+
+  .عنصر_القائمة_الجانبية .سهم_فرعي {
+    position: absolute;
+    left: 1.5rem;
+    transition: transform 0.3s ease;
+    font-size: 0.8rem;
+  }
+
+  .عنصر_القائمة_الجانبية.نشط .سهم_فرعي {
+    transform: rotate(180deg);
+  }
+
+  /* المحتوى الرئيسي */
+  .المحتوى_الرئيسي {
+    margin-right: var(--عرض-القائمة-الجانبية);
+    margin-top: 80px;
+    padding: 2rem;
+    min-height: calc(100vh - 80px);
+    transition: var(--انتقال);
+  }
+
+  .القائمة_الجانبية.موسعة ~ .المحتوى_الرئيسي {
+    margin-right: var(--عرض-القائمة-الجانبية-الموسعة);
+  }
+
+  .حاوية_الإطار {
+    width: calc(100% - var(--عرض-القائمة-الجانبية));
+    height: calc(100vh - 80px);
+    border: none;
+    margin-right: var(--عرض-القائمة-الجانبية);
+    margin-top: 80px;
+    transition: var(--انتقال);
+  }
+
+  .القائمة_الجانبية.موسعة ~ .حاوية_الإطار {
+    width: calc(100% - var(--عرض-القائمة-الجانبية-الموسعة));
+    margin-right: var(--عرض-القائمة-الجانبية-الموسعة);
+  }
+
+  /* التذييل */
+  .تذييل {
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: auto;
+    color: var(--نص-ثانوي);
+    font-size: 0.9rem;
+  }
+
+  .تذييل strong {
+    color: var(--أساسي);
+    font-weight: 700;
+  }
+
+  /* التأثيرات والحركات */
+  @keyframes تلاشي_للداخل {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes انزلاق_لأسفل {
+    from { 
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes توهج {
+    from {
+      text-shadow: 0 0 5px var(--أساسي), 0 0 10px var(--أساسي);
+    }
+    to {
+      text-shadow: 0 0 10px var(--أساسي), 0 0 20px var(--أساسي), 0 0 30px var(--مميز);
+    }
+  }
+
+  /* التكيف مع الأجهزة المختلفة */
+  @media (max-width: 992px) {
+    .القائمة_الجانبية {
+      width: 0;
+      z-index: 1002;
+    }
+
+    .القائمة_الجانبية.موسعة {
+      width: var(--عرض-القائمة-الجانبية-الموسعة);
+    }
+
+    .حاوية_الإطار, .المحتوى_الرئيسي {
+      width: 100%;
+      margin-right: 0;
+    }
+
+    .القائمة_الجانبية.موسعة ~ .حاوية_الإطار,
+    .القائمة_الجانبية.موسعة ~ .المحتوى_الرئيسي {
+      margin-right: var(--عرض-القائمة-الجانبية-الموسعة);
+    }
+
+    .معلومات_المستخدم_المنسدلة .محتوى_القائمة_المنسدلة {
+      right: 1rem;
+      transform: none;
+      max-width: calc(100vw - 2rem);
+    }
+
+    .حاوية_البحث {
+      display: none;
+    }
+  }
+
+  .زر_تبديل_القائمة_الجانبية {
+    background: transparent;
+    border: none;
+    color: var(--فاتح);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: var(--انتقال);
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+  }
+
+  .زر_تبديل_القائمة_الجانبية:hover {
+    transform: scale(1.1);
+  }
+
+  /* تأثيرات حديثة */
+  .تأثير_زجاجي {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .تأثير_حافة_مضيئة {
+    box-shadow: 0 0 10px rgba(76, 201, 240, 0.5);
+  }
+
+  .تأثير_رفع_عند_التمرير {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .تأثير_رفع_عند_التمرير:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--ظل-كبير);
+  }
+
+  /* تحسينات النص */
+  .نص_مضيء {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  }
+
+  .نص_تدرج {
+    background: var(--تدرج);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+`}</style>
+    </>
+  );
+}
